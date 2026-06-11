@@ -8,7 +8,7 @@ carpeta_destino = "Books/"
 
 def descargar_libros():
     """Opción numero 1: hay que descargar libros de Gutenberg"""
-    print("°.-|.°-|°.-|°.-|°.-0 Bienvenido al panel de descarga de libros, usuario!!! :) °.-|.°-|°.-|°.-|°.-0")
+    print("°.-|.°-|°.-|°.- Bienvenido al panel de descarga de libros, usuario!!! :) °.-|.°-|°.-|°.-")
 
     while True:
         try:
@@ -29,11 +29,11 @@ def descargar_libros():
         n=rango_libro,
         directory=carpeta_destino
     )
-    print("\n" + ".-" * 25)
+    print("\n" + ".-" * 20)
     print(" Descarga finalizada con éxito!!! ")
     print(f" el numero de libros descargados es el siguiente: {cantidad_libros}!!!"
            "espero sean más proximamente!! :) ")
-    print(".-" * 25)
+    print(".-" * 20)
     input("\npress 'enter' para regresar al menú principal. :)")
 
 
@@ -102,7 +102,7 @@ def solicitar_resumen(motor, lista_libros):
         print("=" * 50)
     except ValueError:
         print("Por favor ingrese un número entero.")
-    input("\nENTER para regresar al menú...")
+    input("\npress 'enter' para regresar al menú...")
 
 def solicitar_recomendaciones(motor, lista_libros):
     """Opción numero 3: se deben recomendar libros similares"""
@@ -159,16 +159,18 @@ def solicitar_recomendaciones(motor, lista_libros):
     input("\nPresione ENTER para regresar al menú...")
 
 def bienvenida():
-    print("\n" + ".-°-." * 25)
+    print("\n" + ".-°-." * 15)
     print("                     SISTEMA RECOMENDADOR DE LIBROS ")
-    print("-|-°-|-" * 30)
+    print("-|-°-|-" * 15)
     print(
-        "\nEste programa analiza libros de "
-        "Project Gutenberg utilizando TF-IDF"
+        "\nUn gusto conocerlo, usuario!!!, yo como programa me encargo"
+         "de analizar los libros de la pagina "
+        "Project Gutenberg utilizando TF-IDF para recomendarte los"
+        "libros que puede que te gusten en base al libro que mas te gusto. :)"
     )
     print(
-        "para encontrar palabras importantes "
-        "y recomendar libros similares.\n"
+        "yo encontrar palabras importantes "
+        "para de nuevo, recomendarte un libro similar a ello.\n"
     )
 
 """
@@ -180,21 +182,22 @@ def menu():
     motor, lista_libros = actualizar_motor()
 
     while opcion != "4":
-        print("\n" + ".-" * 30)
-        print("                           ||  MENU PRINCIPAL || ")
-        print("-." * 30)
+        print("\n" + ".-~`~-." * 12)
+        print("          ||  MENU  || ")
+        print("-.`.-" * 12)
 
         if lista_libros:
             motor.mostrar_libros()
         else:
             print(
-                "No hay libros descargados.\n"
-                "Utilice la opción 1 para poder descargarlos."
+                "por el momento no hay libros descargados...\n"
+                "Para alegrar nuestra lista agrega"
+                "libros con la opcion 1 para poder descargarlos!!! :)"
             )
-        print("\n-------Opciones disponibles!!!:")
-        print("_- I Descargar libros -.°-.°-")
-        print("°- II Resumen en palabras clave-.-°.-.°-.°-.")
-        print("_- III Recomendaciones.-°-.-°-.-.-.-.")
+        print("\n-.-.-.-.-.-.-Opciones disponibles!!!:")
+        print("_- I Descargar libros!  -.°-.°-")
+        print("°- II palabras claves! -.-°.-.°-.°-.")
+        print("_- III Recomendaciones :)-°-.-°-.-.-.-.")
         print("°- IV Salir del codigo.-.-.°-°.-.-°.-......")
 
         opcion = input(
@@ -246,6 +249,8 @@ def menu():
             print("-.-.-.- este recomendador fue hecho en el grupo 2-3 por: -.-.-.-")
             print("- Leon Favela Dagoberto")
             print("- Chavez Ramirez David Uriel")
+            print("- Espero volvernos a ver  pronto !!! :3 ")
+            
 
             
         else:
@@ -253,7 +258,7 @@ def menu():
             print("Opción inválida.")
             input("\nPresione ENTER...")
 
-
+#prueba de interfaz
 if __name__ == "__main__":
     bienvenida()
     menu()
