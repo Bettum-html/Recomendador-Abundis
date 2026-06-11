@@ -92,7 +92,7 @@ def download_file(url, name, directory):
             book_id = url.split("/")[-2] 
             
             # Creamos un link extra
-            url_extra = f"https://gutenberg.org{book_id}/{book_id}-0.txt"
+            url_extra = f"https://www.gutenberg.org/files/{book_id}/{book_id}-0.txt"
             
             # Reintentamos la petición con la nueva dirección
             response = requests.get(url_extra, stream=True)
