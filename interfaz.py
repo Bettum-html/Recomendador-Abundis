@@ -7,7 +7,7 @@ carpeta_destino = "Books/"
 
 
 def descargar_libros():
-    """Opción [1]: Descargar libros de Gutenberg"""
+    """Opción 1: Descargar libros de Gutenberg"""
     print("--- Bienvenido al panel de descarga de libros ---")
 
     while True:
@@ -34,10 +34,10 @@ def descargar_libros():
         directory=carpeta_destino
     )
 
-    print("=" * 35)
+    print("\n" + ".-" * 25)
     print(" Descarga finalizada con éxito ")
     print(f" {cantidad_libros} libros descargados ")
-    print("=" * 35)
+    print(".-" * 25)
 
     input("\nPresione ENTER para regresar al menú principal...")
 
@@ -84,7 +84,7 @@ def capturar_indice_valido(lista_libros):
 
 
 def solicitar_resumen(motor, lista_libros):
-    """Opción [2]: Mostrar palabras clave"""
+    """Opción 2: Mostrar palabras clave"""
 
     idx = capturar_indice_valido(lista_libros)
 
@@ -110,9 +110,9 @@ def solicitar_resumen(motor, lista_libros):
             num_palabras=cantidad_palabras
         )
 
-        print("\n" + "=" * 50)
+        print("\n" + ".-" * 30)
         print(f" Nombre del libro: {lista_libros[idx].name}")
-        print("-" * 50)
+        print(".-" * 30)
         print(
             f" Palabras clave: {', '.join(top_palabras)}"
         )
@@ -125,7 +125,7 @@ def solicitar_resumen(motor, lista_libros):
 
 
 def solicitar_recomendaciones(motor, lista_libros):
-    """Opción [3]: Recomendar libros similares"""
+    """Opción 3: Recomendar libros similares"""
 
     if len(lista_libros) < 2:
         print(
@@ -170,7 +170,7 @@ def solicitar_recomendaciones(motor, lista_libros):
             num_libros=cantidad_sugerencias
         )
 
-        print("\n" + "=" * 50)
+        print("\n" + ".-" * 30)
         print(
             f" RECOMENDACIONES PARA: "
             f"{lista_libros[idx].name}"
@@ -183,7 +183,7 @@ def solicitar_recomendaciones(motor, lista_libros):
         ):
             print(f"{i}. {libro}")
 
-        print("=" * 50)
+        print("-." * 30)
 
     except ValueError:
         print("Por favor ingrese un número entero.")
@@ -192,9 +192,9 @@ def solicitar_recomendaciones(motor, lista_libros):
 
 
 def bienvenida():
-    print("=" * 50)
+    print("\n" + ".-" * 30)
     print(" SISTEMA RECOMENDADOR DE LIBROS ")
-    print("=" * 50)
+    print("-." * 30)
     print(
         "\nEste programa analiza libros de "
         "Project Gutenberg utilizando TF-IDF"
@@ -212,23 +212,23 @@ def menu():
 
     while opcion != "4":
 
-        print("\n" + "=" * 50)
+        print("\n" + ".-" * 30)
         print(" MENU PRINCIPAL ")
-        print("=" * 50)
+        print("-." * 30)
 
         if lista_libros:
             motor.mostrar_libros()
         else:
             print(
                 "No hay libros descargados.\n"
-                "Utilice la opción [1]."
+                "Utilice la opción 1 para poder descargarlos."
             )
 
-        print("\nOpciones:")
-        print("[1] Descargar libros")
-        print("[2] Resumen de palabras clave")
-        print("[3] Recomendaciones")
-        print("[4] Salir")
+        print("\nOpciones!!!:")
+        print("- 1 Descargar libros -.-.-")
+        print("- 2 Resumen en palabras clave-.-.-.-.-.")
+        print("- 3 Recomendaciones.-.-.-.-.-.-.-.")
+        print("- 4 Salir del codigo.-.-.-.-.-.-......")
 
         opcion = input(
             "\nSeleccione una opción: "
