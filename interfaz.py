@@ -7,22 +7,22 @@ carpeta_destino = "Books/"
 
 
 def descargar_libros():
-    """Opción 1: Descargar libros de Gutenberg"""
-    print("--- Bienvenido al panel de descarga de libros ---")
+    """Opción numero 1: hay que descargar libros de Gutenberg"""
+    print("°.-|.°-|°.-|°.-|°.-0 Bienvenido al panel de descarga de libros, usuario!!! :) °.-|.°-|°.-|°.-|°.-0")
 
     while True:
         try:
             cantidad_libros = int(
-                input("Cantidad de libros a descargar: ").strip()
+                input("cual es la cantidad de libros que gusta descargar?: ").strip()
             )
             if cantidad_libros <= 0:
-                print("Por favor introduzca un número mayor a cero.")
+                print("Por favor ingrese un número mayor a cero, solo acepto numeros positivos y enteros :(")
                 continue
             break
         except ValueError:
-            print("Entrada inválida, por favor introduzca un número entero.")
+            print("Entrada inválida, por favor introduzca un número entero, solo puedo aceptar esos!!! :(")
 
-    print(f"\nIniciando la descarga de {cantidad_libros} libros...")
+    print(f"\nEmpezando la descarga de {cantidad_libros} libros [...]")
 
     rango_libro = range(1, cantidad_libros + 1)
     get_books.main(
@@ -30,14 +30,15 @@ def descargar_libros():
         directory=carpeta_destino
     )
     print("\n" + ".-" * 25)
-    print(" Descarga finalizada con éxito ")
-    print(f" {cantidad_libros} libros descargados ")
+    print(" Descarga finalizada con éxito!!! ")
+    print(f" el numero de libros descargados es el siguiente: {cantidad_libros}!!!"
+           "espero sean más proximamente!! :) ")
     print(".-" * 25)
-    input("\nPresione ENTER para regresar al menú principal...")
+    input("\npress 'enter' para regresar al menú principal. :)")
 
 
 def actualizar_motor():
-    """Carga libros y calcula TF-IDF"""
+    """se encargará de cargar libros y calcula TF-IDF"""
 
     lista_libros = libros.crear_lista_libros_ingles(
         directory=carpeta_destino,
@@ -53,7 +54,8 @@ def capturar_indice_valido(lista_libros):
     """Valida el índice ingresado"""
     try:
         idx = int(
-            input("\nIntroduzca el índice del libro: ").strip()
+            input("\nIngrese el índice del libro, por favor! "
+            "(el indice es el numero que se muestra antes del nombre): ").strip()
         )
         if idx < 0 or idx >= len(lista_libros):
             print(
@@ -64,28 +66,28 @@ def capturar_indice_valido(lista_libros):
             return None
         return idx
     except ValueError:
-        print("Entrada inválida. Ingrese un número entero.")
-        input("\nPresione ENTER para continuar...")
+        print("Lo siento, la entrada es inválida!!! debes de ingresar un número entero.")
+        input("\npress 'enter' para continuar")
         return None
 
 
 def solicitar_resumen(motor, lista_libros):
-    """Opción 2: palabras clave"""
+    """Opción numero 2: captura de palabras clave"""
 
     idx = capturar_indice_valido(lista_libros)
     if idx is None:
         return
-    print(f"\nLibro seleccionado: {lista_libros[idx].name}")
+    print(f"\nLibro indicado: {lista_libros[idx].name}")
 
     try:
         cantidad_palabras = int(
             input(
-                "Cantidad de palabras que desea ver: "
+                "cual es la cantidad de palabras que desearias ver, usuario? :) : "
             ).strip()
         )
         if cantidad_palabras <= 0:
-            print("La cantidad debe ser mayor a cero.")
-            input("\nPresione ENTER para continuar...")
+            print("La cantidad ingresada debe ser mayor a cero!!! >_<")
+            input("\npress 'enter' para continuar...")
             return
         top_palabras = motor.resumen(
             idx_libro=idx,
@@ -103,38 +105,38 @@ def solicitar_resumen(motor, lista_libros):
     input("\nENTER para regresar al menú...")
 
 def solicitar_recomendaciones(motor, lista_libros):
-    """Opción 3: Recomendar libros similares"""
+    """Opción numero 3: se deben recomendar libros similares"""
 
     if len(lista_libros) < 2:
         print(
             "Se necesitan al menos 2 libros para "
-            "generar recomendaciones."
+            "generar recomendaciones... vamos, intenta unos más! :)"
         )
-        input("\nPresione ENTER para continuar...")
+        input("\npress 'enter' para continuar el código!...")
         return
 
     idx = capturar_indice_valido(lista_libros)
     if idx is None:
         return
-    print(f"\nLibro seleccionado: {lista_libros[idx].name}")
+    print(f"\nLibro indicado: {lista_libros[idx].name} :O")
     try:
         limite = len(lista_libros) - 1
         cantidad_sugerencias = int(
             input(
-                f"¿Cuántos libros desea? "
-                f"(Máximo {limite}): "
+                f"Cuántos libros desearias descargar, usuario? :) "
+                f"(CANTIDAD MÁXIMA! {limite}): "
             ).strip()
         )
         if cantidad_sugerencias <= 0:
             print("La cantidad debe ser mayor a cero.")
-            input("\nENTER para continuar...")
+            input("\npress 'enter' para continuar...")
             return
         if cantidad_sugerencias > limite:
             print(
                 f"Solo existen {limite} libros "
                 f"para comparar."
             )
-            input("\nPresione ENTER para continuar...")
+            input("\npress 'enter' para continuar...")
             return
         sugerencias = motor.libros_similares(
             idx_libro=idx,
@@ -157,9 +159,9 @@ def solicitar_recomendaciones(motor, lista_libros):
     input("\nPresione ENTER para regresar al menú...")
 
 def bienvenida():
-    print("\n" + ".-" * 30)
-    print(" SISTEMA RECOMENDADOR DE LIBROS ")
-    print("-." * 30)
+    print("\n" + ".-°-." * 25)
+    print("                     SISTEMA RECOMENDADOR DE LIBROS ")
+    print("-|-°-|-" * 30)
     print(
         "\nEste programa analiza libros de "
         "Project Gutenberg utilizando TF-IDF"
@@ -169,7 +171,9 @@ def bienvenida():
         "y recomendar libros similares.\n"
     )
 
-
+"""
+    esta seria el switch que ya, en base a la opcion elegida entre uno y cuatro, hará lo pedido.
+"""
 def menu():
     opcion = "0"
 
@@ -177,7 +181,7 @@ def menu():
 
     while opcion != "4":
         print("\n" + ".-" * 30)
-        print(" MENU PRINCIPAL ")
+        print("                           ||  MENU PRINCIPAL || ")
         print("-." * 30)
 
         if lista_libros:
@@ -187,32 +191,34 @@ def menu():
                 "No hay libros descargados.\n"
                 "Utilice la opción 1 para poder descargarlos."
             )
-        print("\nOpciones!!!:")
-        print("- 1 Descargar libros -.-.-")
-        print("- 2 Resumen en palabras clave-.-.-.-.-.")
-        print("- 3 Recomendaciones.-.-.-.-.-.-.-.")
-        print("- 4 Salir del codigo.-.-.-.-.-.-......")
+        print("\n-------Opciones disponibles!!!:")
+        print("_- I Descargar libros -.°-.°-")
+        print("°- II Resumen en palabras clave-.-°.-.°-.°-.")
+        print("_- III Recomendaciones.-°-.-°-.-.-.-.")
+        print("°- IV Salir del codigo.-.-.°-°.-.-°.-......")
 
         opcion = input(
-            "\nSeleccione una opción: "
+            "\nSeleccione una opción (1,2,3,4): "
         ).strip()
 
         if opcion == "1":
             descargar_libros()
             print(
-                "\nProcesando textos y "
-                "calculando TF-IDF..."
+                "\nProcesando los textos para "
+                "calcular su TF-IDF..."
             )
             motor, lista_libros = actualizar_motor()
 
             if lista_libros:
-                print("Motor actualizado correctamente.")
+                print("Motor actualizado correctamente!!!")
         elif opcion == "2":
             if not lista_libros:
                 print(
-                    "Debe descargar libros primero."
+                    "Ups!, Debes de descargar libros primero!, procura " \
+                    "darle a la opción 1 para descargar los libros."
+
                 )
-                input("\nENTER para regresar...")
+                input("\npress 'enter' para regresar...")
             else:
                 motor.mostrar_libros()
                 solicitar_resumen(
@@ -224,9 +230,9 @@ def menu():
 
             if not lista_libros:
                 print(
-                    "Debes descargar por lo menos unos cuantos libros primero."
+                    "Debes descargar por lo menos unos cuantos libros primero para desbloquear esta opción! :("
                 )
-                input("\nENTER para regresar...")
+                input("\npress 'enter' para regresar...")
             else:
                 motor.mostrar_libros()
                 solicitar_recomendaciones(
