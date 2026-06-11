@@ -278,8 +278,12 @@ def menu():
 
         elif opcion == "4":
 
-            print("\n¡Gracias por usar el sistema!")
+            print("\n¡Muchas gracias por usar este sistema!")
+            print("-.-.-.- este recomendador fue hecho en el grupo 2-3 por: -.-.-.-")
+            print("- Leon Favela Dagoberto")
+            print("- Chavez Ramirez David Uriel")
 
+            
         else:
 
             print("Opción inválida.")
